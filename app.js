@@ -2,14 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const swaggerize = require('swaggerize-express');
 
-const api = require('./config/swagger');
-
-const headerMiddleware = require('./middleware/header.middleware');
+const headerMiddleware = require('./src/middleware/header.middleware');
 
 const APP_PORT = process.env.PORT || 8080;
 const handlers = './handlers';
 
-const { APP_SECRET } = require('../config/auth');
+const { APP_SECRET } = require('./config/auth');
 const session = require('express-session');
 
 const app = express();
@@ -24,11 +22,11 @@ app.use(headerMiddleware);
 // }));
 
 app.get('/status', (req, res, next) => res.send('OK'));
-app.get('/install', require('./handlers/install').get);
-app.get('/auth', require('./handlers/auth').get);
-app.get('/inventory', require('./handlers/inventory').get);
+app.get('/install', require('./src/handlers/install').get);
+app.get('/auth', require('./src/handlers/auth').get);
+app.get('/inventory', require('./src/handlers/inventory').get);
 
-app.post('/discount', require('./handlers/discount').post);
+app.post('/discount', require('./src/handlers/discount').post);
 
 // 404 response
 app.use((req, res, next) => {

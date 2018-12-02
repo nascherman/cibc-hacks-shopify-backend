@@ -1,13 +1,13 @@
 const ShopifyToken = require('shopify-token');
 
-const { API_KEY, API_SECRET, APP_URL } = require('../../config/auth');
+const { API_KEY, API_SECRET, APP_URL, REDIRECT_URI } = require('../../config/auth');
 
 const scopes = require('../../config/scopes');
 
 const shopifyToken = new ShopifyToken({
     apiKey: API_KEY,
     sharedSecret: API_SECRET,
-    redirectUri: 'http://localhost:8080/auth',
+    redirectUri: `${REDIRECT_URI}/auth`,
     scopes
 });
 
