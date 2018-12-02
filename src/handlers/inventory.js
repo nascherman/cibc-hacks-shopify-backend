@@ -18,7 +18,6 @@ module.exports.get = (req, res, next) => {
             })[0];
 
             res.send(itemToSell);
-            // res.send(response);
         });
 
     // console.log('Product listing', listingResponse);

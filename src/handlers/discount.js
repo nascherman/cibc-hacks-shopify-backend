@@ -10,9 +10,6 @@ module.exports.post = (req, res, next) => {
         compare_at_price
     } = req.body;
 
-
-    console.log(accessToken, shop);
-
     const shopify = new Shopify({
         shopName: shop,
         accessToken
@@ -22,6 +19,7 @@ module.exports.post = (req, res, next) => {
         compare_at_price,
         price
     }).then(response => {
+        console.log('RES', response);
         res.send(response);
     })
         .catch(e => {
